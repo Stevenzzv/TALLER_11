@@ -5,6 +5,8 @@
 **Funcion limpiarBufer**
 **Funcion libroRepetido**
 
+### Caso 2 completo
+
 <!-- ## Funciones basicas agregadas
 ##
  **Todas con validaciones**

@@ -78,8 +78,21 @@ int main()
                 }
             } while (1);
 
+            break;
         case 2:
-            printf("Opcion 2 seleccionada.\n");
+
+            printf("------------------------------------------------------------------------------------------\n");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("------------------------------------------------------------------------------------------\n");
+            for (int i = 0; i < cont; i++)
+            {
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+
+                printf("------------------------------------------------------------------------------------------\n");
+            }
+
+            printf("Holaa\n");
+
             break;
         case 3:
             printf("Opcion 3 seleccionada.\n");
