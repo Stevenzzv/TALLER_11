@@ -1,6 +1,12 @@
 # TALLER_11
 
-## Funciones basicas agregadas
+### Caso 1 completado con validaciones
+### Se agregaron dos funciones adicionales
+**Funcion limpiarBufer**
+**Funcion libroRepetido**
+
+<!-- ## Funciones basicas agregadas
+##
  **Todas con validaciones**
  * menu()
  * leerInt()
@@ -12,4 +18,4 @@
 
  ## Arreglo de tipo estructura libo creado [10] espacios 
 
- ## Bucle menu agregado y validado
+ ## Bucle menu agregado y validado -->

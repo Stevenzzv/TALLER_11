@@ -11,7 +11,11 @@ struct Libro
 };
 
 void menu();
+
+// Leer un numero entero con validacion
 int leerInt();
+
+// Leer un numero decimal (float) con validacion
 float leerFloat();
 
 // Verifica si una cadena está en blanco o contiene solo espacios
@@ -19,5 +23,9 @@ int blanco(const char str[]);
 
 // Lee una cadena de caracteres con validación
 void leerChar(char str[], int size);
+
+int libroRepetido(const struct Libro libros[], int numLibros, const char *nombreLibro);
+
+void limpiarBuffer();
 
 #endif // FUNCIONES_H

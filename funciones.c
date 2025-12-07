@@ -1,5 +1,6 @@
 #include <stdio.h> // Biblioteca estandar de entrada y salida
 #include <string.h>
+#include "funciones.h" // Asegurarse de incluir la definición de la estructura Libro
 
 // Implementacion de funciones personalizadas
 void menu()
@@ -65,7 +66,6 @@ void leerChar(char str[], int size)
 {
     do
     {
-        printf("Ingrese una cadena: ");
         fgets(str, size, stdin);
         size_t len = strlen(str);
         if (len > 0 && str[len - 1] == '\n')
@@ -77,4 +77,26 @@ void leerChar(char str[], int size)
             printf("La cadena ingresada esta en blanco. Intente nuevamente.\n");
         }
     } while (blanco(str));
+}
+
+// Verifica si un libro ya está registrado
+int libroRepetido(const struct Libro libro[], int numLibros, const char *nombreLibro)
+{
+    for (int i = 0; i < numLibros; i++)
+    {
+        if (strcmp(libro[i].titulo, nombreLibro) == 0)
+        {
+            return 1; // Libro repetido
+        }
+    }
+    return 0; // Libro no repetido
+}
+
+// Limpiar el buffer de entrada
+
+void limpiarBuffer()
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 }
