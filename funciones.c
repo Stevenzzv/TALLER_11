@@ -80,9 +80,9 @@ void leerChar(char str[], int size)
 }
 
 // Verifica si un libro ya está registrado
-int libroRepetido(const struct Libro libro[], int numLibros, const char *nombreLibro)
+int libroRepetido(const struct Libro libro[], int cont, const char *nombreLibro)
 {
-    for (int i = 0; i < numLibros; i++)
+    for (int i = 0; i < cont; i++)
     {
         if (strcmp(libro[i].titulo, nombreLibro) == 0)
         {
@@ -92,6 +92,31 @@ int libroRepetido(const struct Libro libro[], int numLibros, const char *nombreL
     return 0; // Libro no repetido
 }
 
+// Buscar libro
+int buscarLibro(const struct Libro libro[], int cont, const char *buscar)
+{
+    for (int i = 0; i < cont; i++)
+    {
+        if (strcmp(libro[i].titulo, buscar) == 0)
+        {
+            printf("El libro esta registrado en el sistema.\nInformacion:\n");
+            printf("------------------------------------------------------------------------------------------\n");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("------------------------------------------------------------------------------------------\n");
+            printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+
+            printf("------------------------------------------------------------------------------------------\n");
+            return i; // Libro encontrado
+        }
+        else
+        {
+            printf("El libro no esta registrado en el sistema.\n");
+            break;
+        }
+    }
+    return -1; // Libro no encontrado
+}
+
 // Limpiar el buffer de entrada
 
 void limpiarBuffer()
@@ -99,4 +124,33 @@ void limpiarBuffer()
     int c;
     while ((c = getchar()) != '\n' && c != EOF)
         ;
+}
+
+// Elimina un libro por su ID y reorganiza los IDs de los libros restantes
+void eliminarLibro(struct Libro libros[], int *numLibros, int idEliminar)
+{
+    int encontrado = 0;
+
+    for (int i = 0; i < *numLibros; i++)
+    {
+        if (libros[i].id == idEliminar)
+        {
+            encontrado = 1;
+        }
+        if (encontrado && i < *numLibros - 1)
+        {
+            libros[i] = libros[i + 1]; // Desplazar el libro siguiente hacia la izquierda
+            libros[i].id = i + 1;      // Actualizar el ID del libro
+        }
+    }
+
+    if (encontrado)
+    {
+        (*numLibros)--; // Reducir el contador de libros
+        printf("Libro con ID %d eliminado exitosamente.\n", idEliminar);
+    }
+    else
+    {
+        printf("Libro con ID %d no encontrado.\n", idEliminar);
+    }
 }

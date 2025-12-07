@@ -7,10 +7,11 @@ int main()
 
     // Variables
     int opc = 0;
-    char prueba[50];
+    char buscar[50];
     struct Libro libro[10];
 
     int cont = 0;
+    int aux = 0;
 
     do // Bucle principal del programa
     {
@@ -31,8 +32,13 @@ int main()
         switch (opc)
         {
         case 1:
-            printf("Ingrese el nombre del libro a agregar: ");
         leerLibro:
+            if (cont >= 10)
+            {
+                printf("Capacidad maxima de libros alcanzada.\n");
+                break;
+            }
+            printf("Ingrese el nombre del libro a agregar: ");
             leerChar(libro[cont].titulo, 100);
 
             do
@@ -47,7 +53,6 @@ int main()
                     if (respuesta == 1)
                     {
                         printf("-------------------------------------------\n");
-                        printf("Ingrese otro nombre:");
                         goto leerLibro;
                     }
                     else
@@ -80,6 +85,11 @@ int main()
 
             break;
         case 2:
+            if (cont == 0)
+            {
+                printf("No hay libros registrados en el sistema.\n");
+                break;
+            }
 
             printf("------------------------------------------------------------------------------------------\n");
             printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
@@ -91,14 +101,146 @@ int main()
                 printf("------------------------------------------------------------------------------------------\n");
             }
 
-            printf("Holaa\n");
-
             break;
         case 3:
-            printf("Opcion 3 seleccionada.\n");
+            if (cont == 0)
+            {
+                printf("No hay libros registrados en el sistema.\n");
+                break;
+            }
+        buscar:
+            printf("Ingrese el nombre del libro a buscar: ");
+            leerChar(buscar, 50);
+
+            aux = buscarLibro(libro, cont, buscar);
+
+            if (aux != -1) // Si el libro fue encontrado
+            {
+                printf("-------------------------------------------\n");
+                printf("1. Cambiar estado ('Disponible' , 'Prestado'):\n");
+                printf("2. Eliminar libro\n");
+                printf("3. Volver al menu principal\n");
+                printf("-------------------------------------------\n");
+
+            Menu1case3:
+                int opcion = leerInt();
+                limpiarBuffer();
+
+                switch (opcion)
+                {
+                case 1:
+                    libro[aux].disponible = !libro[aux].disponible;
+                    printf("Estado del libro actualizado exitosamente.\n");
+                    printf("Libro: %s ahora esta %s.\n", libro[aux].titulo, libro[aux].disponible ? "Disponible" : "Prestado");
+                    break;
+                case 2:
+                    eliminarLibro(libro, &cont, libro[aux].id);
+                    break;
+                case 3:
+                    break;
+
+                default:
+                    if (opc < 1 || opc > 3)
+                    {
+                        printf("Opcion no valida. Por favor, seleccione una opcion del menu: ");
+                        goto Menu1case3; // Volver al menu
+                    }
+                    break;
+                }
+                break; // Pendiente
+            }
+            else // Si el libro no fue encontrado
+            {
+                printf("-------------------------------------------\n");
+                printf("1. Registrar libro no encontrado\n");
+                printf("2. Buscar otro libro\n");
+                printf("3. Volver al menu principal\n");
+                printf("-------------------------------------------\n");
+
+            Menu2case3:
+                int opcion = leerInt();
+                limpiarBuffer();
+
+                switch (opcion)
+                {
+                case 1:
+                    goto leerLibro;
+
+                    break;
+                case 2:
+                    goto buscar;
+                    break;
+                case 3:
+                    break;
+
+                default:
+                    if (opc < 1 || opc > 3)
+                    {
+                        printf("Opcion no valida. Por favor, seleccione una opcion del menu: ");
+                        goto Menu1case3; // Volver al menu
+                    }
+                    break;
+                }
+            }
+
             break;
         case 4:
-            printf("Opcion 4 seleccionada.\n");
+            if (cont == 0)
+            {
+                printf("No hay libros registrados en el sistema.\n");
+                break;
+            }
+            printf("------------------------------------------------------------------------------------------\n");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("------------------------------------------------------------------------------------------\n");
+            for (int i = 0; i < cont; i++)
+            {
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+
+                printf("------------------------------------------------------------------------------------------\n");
+            }
+
+            printf("Seleccione el ID del libro a cambiar estado ('Disponible' , 'Prestado'): ");
+        ID:
+            int idCambiar = leerInt();
+            limpiarBuffer();
+
+            if (idCambiar < 1 || idCambiar > cont)
+            {
+                printf("ID no valido.\n");
+                printf("Seleccione un ID valido: ");
+                goto ID;
+                break;
+            }
+
+            libro[idCambiar - 1].disponible = !libro[idCambiar - 1].disponible;
+            printf("Estado del libro actualizado exitosamente.\n");
+            printf("Libro: %s ahora esta %s.\n", libro[idCambiar - 1].titulo, libro[idCambiar - 1].disponible ? "Disponible" : "Prestado");
+
+            break;
+        case 5:
+            if (cont == 0)
+            {
+                printf("No hay libros registrados en el sistema.\n");
+                break;
+            }
+            printf("------------------------------------------------------------------------------------------\n");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("------------------------------------------------------------------------------------------\n");
+            for (int i = 0; i < cont; i++)
+            {
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+
+                printf("------------------------------------------------------------------------------------------\n");
+            }
+
+            printf("Seleccione el ID del libro a eliminar: ");
+            int idEliminar = leerInt();
+            limpiarBuffer();
+            eliminarLibro(libro, &cont, idEliminar);
+            break;
+        case 6:
+            printf("saliendo...\n");
             break;
         default:
             if (opc < 1 || opc > 6)
@@ -107,7 +249,6 @@ int main()
                 goto inicio; // Volver al menu
             }
             break;
-            /* code */
         }
 
     } while (opc != 6);

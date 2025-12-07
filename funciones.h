@@ -24,8 +24,13 @@ int blanco(const char str[]);
 // Lee una cadena de caracteres con validación
 void leerChar(char str[], int size);
 
-int libroRepetido(const struct Libro libros[], int numLibros, const char *nombreLibro);
+int libroRepetido(const struct Libro libros[], int cont, const char *nombreLibro);
 
 void limpiarBuffer();
+
+int buscarLibro(const struct Libro libro[], int cont, const char *buscar);
+
+// Elimina un libro por su ID y reorganiza los IDs de los libros restantes
+void eliminarLibro(struct Libro libros[], int *numLibros, int idEliminar);
 
 #endif // FUNCIONES_H
