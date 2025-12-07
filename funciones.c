@@ -108,12 +108,8 @@ int buscarLibro(const struct Libro libro[], int cont, const char *buscar)
             printf("------------------------------------------------------------------------------------------\n");
             return i; // Libro encontrado
         }
-        else
-        {
-            printf("El libro no esta registrado en el sistema.\n");
-            break;
-        }
     }
+    printf("El libro no esta registrado en el sistema.\n");
     return -1; // Libro no encontrado
 }
 

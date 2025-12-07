@@ -12,6 +12,10 @@ int main()
 
     int cont = 0;
     int aux = 0;
+    int respuesta = 0;
+    int opcion = 0;
+    int idCambiar = 0;
+    int idEliminar = 0;
 
     do // Bucle principal del programa
     {
@@ -48,7 +52,7 @@ int main()
                     printf("-------------------------------------------\n");
                     printf("El libro ya existe.\n");
                     printf("Ingresar otro libro. 1)si 2)no: ");
-                    int respuesta = leerInt();
+                    respuesta = leerInt();
                     limpiarBuffer();
                     if (respuesta == 1)
                     {
@@ -123,7 +127,7 @@ int main()
                 printf("-------------------------------------------\n");
 
             Menu1case3:
-                int opcion = leerInt();
+                opcion = leerInt();
                 limpiarBuffer();
 
                 switch (opcion)
@@ -140,7 +144,7 @@ int main()
                     break;
 
                 default:
-                    if (opc < 1 || opc > 3)
+                    if (opcion < 1 || opcion > 3)
                     {
                         printf("Opcion no valida. Por favor, seleccione una opcion del menu: ");
                         goto Menu1case3; // Volver al menu
@@ -158,7 +162,7 @@ int main()
                 printf("-------------------------------------------\n");
 
             Menu2case3:
-                int opcion = leerInt();
+                opcion = leerInt();
                 limpiarBuffer();
 
                 switch (opcion)
@@ -174,10 +178,10 @@ int main()
                     break;
 
                 default:
-                    if (opc < 1 || opc > 3)
+                    if (opcion < 1 || opcion > 3)
                     {
                         printf("Opcion no valida. Por favor, seleccione una opcion del menu: ");
-                        goto Menu1case3; // Volver al menu
+                        goto Menu2case3; // Volver al menu
                     }
                     break;
                 }
@@ -202,7 +206,7 @@ int main()
 
             printf("Seleccione el ID del libro a cambiar estado ('Disponible' , 'Prestado'): ");
         ID:
-            int idCambiar = leerInt();
+            idCambiar = leerInt();
             limpiarBuffer();
 
             if (idCambiar < 1 || idCambiar > cont)
@@ -235,7 +239,7 @@ int main()
             }
 
             printf("Seleccione el ID del libro a eliminar: ");
-            int idEliminar = leerInt();
+            idEliminar = leerInt();
             limpiarBuffer();
             eliminarLibro(libro, &cont, idEliminar);
             break;
