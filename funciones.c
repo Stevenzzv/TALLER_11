@@ -101,9 +101,9 @@ int buscarLibro(const struct Libro libro[], int cont, const char *buscar)
         {
             printf("El libro esta registrado en el sistema.\nInformacion:\n");
             printf("------------------------------------------------------------------------------------------\n");
-            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Estado");
             printf("------------------------------------------------------------------------------------------\n");
-            printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+            printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Disponible" : "Prestado");
 
             printf("------------------------------------------------------------------------------------------\n");
             return i; // Libro encontrado
