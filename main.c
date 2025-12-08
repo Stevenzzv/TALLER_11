@@ -77,9 +77,9 @@ int main()
 
                     printf("Libro agregado exitosamente.\n");
                     printf("------------------------------------------------------------------------------------------\n");
-                    printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+                    printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Estado");
                     printf("------------------------------------------------------------------------------------------\n");
-                    printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[cont].id, libro[cont].titulo, libro[cont].autor, libro[cont].anioPublicacion, libro[cont].disponible ? "Si" : "No");
+                    printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[cont].id, libro[cont].titulo, libro[cont].autor, libro[cont].anioPublicacion, libro[cont].disponible ? "Disponible" : "Prestado");
 
                     printf("------------------------------------------------------------------------------------------\n");
                     cont++;
@@ -96,11 +96,11 @@ int main()
             }
 
             printf("------------------------------------------------------------------------------------------\n");
-            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Estado");
             printf("------------------------------------------------------------------------------------------\n");
             for (int i = 0; i < cont; i++)
             {
-                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Disponible" : "Prestado");
 
                 printf("------------------------------------------------------------------------------------------\n");
             }
@@ -195,12 +195,11 @@ int main()
                 break;
             }
             printf("------------------------------------------------------------------------------------------\n");
-            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Estado");
             printf("------------------------------------------------------------------------------------------\n");
             for (int i = 0; i < cont; i++)
             {
-                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
-
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Disponible" : "Prestado");
                 printf("------------------------------------------------------------------------------------------\n");
             }
 
@@ -229,12 +228,11 @@ int main()
                 break;
             }
             printf("------------------------------------------------------------------------------------------\n");
-            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Disponible");
+            printf("| %-4s | %-30s | %-20s | %-10s | %-10s |\n", "ID", "Nombre", "Autor", "Anio", "Estado");
             printf("------------------------------------------------------------------------------------------\n");
             for (int i = 0; i < cont; i++)
             {
-                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Si" : "No");
-
+                printf("| %-4d | %-30.30s | %-20s | %-10d | %-10s |\n", libro[i].id, libro[i].titulo, libro[i].autor, libro[i].anioPublicacion, libro[i].disponible ? "Disponible" : "Prestado");
                 printf("------------------------------------------------------------------------------------------\n");
             }
 
