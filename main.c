@@ -70,7 +70,13 @@ int main()
                     printf("Ingrese el autor del libro: ");
                     leerChar(libro[cont].autor, 50);
                     printf("Ingrese el anio de publicacion: ");
+                    aniopublicacion:
                     libro[cont].anioPublicacion = leerInt();
+
+                    if(libro[cont].anioPublicacion <= 0){
+                        printf("Error, no puede ingresar numeros negativos. ingrese un nuevo anio: ");
+                        goto aniopublicacion;
+                    }
 
                     libro[cont].id = cont + 1;  // Asignar ID secuencial
                     libro[cont].disponible = 1; // Disponible por defecto
